@@ -1,0 +1,18 @@
+---
+- include:              '../tasks/install_packages.yml'
+- include:              '../tasks/enable_apache_modules.yml'
+- include:              '../tasks/create_files.yml'
+- include:              '../tasks/install_files.yml'
+- include:              '../tasks/symlinks.yml'
+- include:              '../tasks/sync_dirs.yml'
+- include:              '../tasks/restart_services.yml'
+  when:                 enable_apache_modules_result.changed
+                        or install_files_result.changed
+                        or sync_dirs_result.changed
+- include:              '../tasks/known_hosts.yml'
+- include:              '../tasks/lines_in_files.yml'
+- include:              '../tasks/create_files.yml'
+- shell:                mount -a
+  changed_when:         False
+  args:
+    warn:               no
