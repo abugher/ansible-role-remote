@@ -8,3 +8,5 @@ dependencies:
     when:       skipdeps is not defined
   - role:       'root_ssh_key'
     when:       skipdeps is not defined
+  - role:       'sshfs_client'
+    when:       skipdeps is not defined

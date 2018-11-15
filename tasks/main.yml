@@ -9,9 +9,3 @@
                         or install_files_result.changed
                         or sync_dirs_result.changed
 - include:              '../tasks/known_hosts.yml'
-- include:              '../tasks/lines_in_files.yml'
-- include:              '../tasks/create_files.yml'
-- shell:                mount -a
-  changed_when:         False
-  args:
-    warn:               no
