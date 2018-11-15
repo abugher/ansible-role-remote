@@ -4,35 +4,16 @@ install_packages:
   - 'libapache2-mod-perl2'
   - 'liburi-encode-perl'
   - 'sshfs'
+  - 'rsync' # synchronize module (in sync_dirs.yml) depends on this.
+enable_apache_modules:
+  - 'cgid'
 create_files:
-  - owner:              'www-data'
-    group:              'www-data'
-    mode:               '0755'
-    state:              'directory'
-    path:               '/etc/pianobard'
   - owner:              'display'
     group:              'display'
     mode:               '0755'
     path:               '/storage'
     state:              'directory'
-enable_apache_modules:
-  - 'cgid'
 install_files:
-#  - owner:              'www-data'
-#    group:              'www-data'
-#    mode:               '0640'
-#    src:                '../../../sensitive/ansible/roles/remote/files/conf/config_rachel'
-#    dest:               '/etc/pianobard/config_rachel'
-  - owner:              'www-data'
-    group:              'www-data'
-    mode:               '0644'
-    src:                '../../../sensitive/ansible/roles/remote/files/conf/config_aaron'
-    dest:               '/etc/pianobard/config_aaron'
-  - owner:              'www-data'
-    group:              'www-data'
-    mode:               '0644'
-    src:                '../../../sensitive/ansible/roles/remote/files/conf/config_rachel'
-    dest:               '/etc/pianobard/config_rachel'
   - owner:              'root'
     group:              'root'
     mode:               '0755'
@@ -73,11 +54,6 @@ sync_dirs:
   - src:                "{{ role_path }}/files/cgi-bin/pianobar/"
     dest:               '/usr/lib/cgi-bin/pianobar/'
     delete:             'no'
-symlinks:
-  - owner:              'www-data'
-    group:              'www-data'
-    src:                'config_aaron'
-    dest:               '/etc/pianobard/config'
 restart_services:
   - 'apache2'
 known_hosts:
