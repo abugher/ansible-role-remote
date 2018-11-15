@@ -6,3 +6,5 @@ dependencies:
     when:       skipdeps is not defined
   - role:       'mplayerd'
     when:       skipdeps is not defined
+  - role:       'root_ssh_key'
+    when:       skipdeps is not defined
