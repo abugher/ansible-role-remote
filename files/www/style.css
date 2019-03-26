@@ -129,18 +129,21 @@ a {
   margin-left:                  4vw;
   margin-top:                   5vh;
 }
+
 .mplayer .button {
   background-color:             #a09aa6;
   background:                   radial-gradient(#f0eaf6, #908a96);
   border-color:                 #a09aa6;
   color:                        #000000;
 }
+
 .pianobar .button {
   background-color:             #302a36;
   background:                   radial-gradient(#302a36, #605a66);
   color:                        #ffffff;
   border-color:                 #302a36;
 }
+
 .button-caption {
   float:                        left;
 
