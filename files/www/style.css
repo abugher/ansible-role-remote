@@ -113,10 +113,10 @@ a {
   float:                        left;
 
   width:                        18vw;
-  height:                       7vh;
-  line-height:                  7vh;
+  height:                       5.5vh;
+  line-height:                  5.5vh;
 
-  font-size:                    6vh;
+  font-size:                    5vh;
   text-align:                   center;
 
   border-width:                 1vh 1vw 1vh 1vw;
@@ -127,7 +127,7 @@ a {
   border-bottom-left-radius:    1vw 1vh;
 
   margin-left:                  4vw;
-  margin-top:                   5vh;
+  margin-top:                   4vh;
 }
 
 .mplayer .button {
@@ -150,8 +150,8 @@ a {
   text-align:                   center;
   font-weight:                  bold;
 
-  height:                       5vh;
-  line-height:                  5vh;
+  height:                       4vh;
+  line-height:                  4vh;
   font-size:                    3vw;
 
   width:                        18vw;

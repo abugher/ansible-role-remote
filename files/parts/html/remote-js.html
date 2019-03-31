@@ -10,6 +10,7 @@
       function nextFile                 (button) { sendOrder(button, '/cgi-bin/mplayer/next-file.pl'            );}
       function volumeUp                 (button) { sendOrder(button, '/cgi-bin/mplayer/volume-up.pl'            );}
       function volumeDown               (button) { sendOrder(button, '/cgi-bin/mplayer/volume-down.pl'          );}
+      function cycleSubs                (button) { sendOrder(button, '/cgi-bin/mplayer/cycle-subs.pl'           );}
       function pianobarPausePlay        (button) { sendOrder(button, '/cgi-bin/pianobar/pause-play.pl'          );}
       function pianobarNext             (button) { sendOrder(button, '/cgi-bin/pianobar/next.pl'                );}
       function pianobarVolumeUp         (button) { sendOrder(button, '/cgi-bin/pianobar/volume-up.pl'           );}
@@ -18,6 +19,7 @@
       function boo                      (button) { sendOrder(button, '/cgi-bin/pianobar/boo.pl'                 );}
       function doNothing                (button) { sendOrder(button, '/cgi-bin/pianobar/do-nothing.pl'          );}
 
+
       var fingerDown;
       document.onmousedown      = function() { fingerDown = true;  }
       document.ontouchstart     = function() { fingerDown = true;  }
@@ -25,6 +27,7 @@
       document.ontouchend       = function() { fingerDown = false; }
 
       var originalBackground    = '';
+
 
       function sendOrder(button, action) {
         originalBackground              = button.style.background;
@@ -73,9 +76,9 @@
         );
       }
 
+
       function popUp(button) {
         button.style.borderStyle = 'outset';
         button.style.background = originalBackground;
       }
     </script>
-
