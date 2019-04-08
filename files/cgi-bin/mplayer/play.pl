@@ -15,9 +15,8 @@ my $q           = CGI->new();
 my $file        = $q->param('file');
 my @fileset     = $q->multi_param('fileset');
 
-# .1 seconds seems to work, so let's do .15 for wiggle room.
 # microseconds
-my $napTime     = 150000;
+my $napTime     = 300000;
 
 sub issue_command {
   my $command = $_[0];
