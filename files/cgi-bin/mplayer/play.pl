@@ -47,7 +47,6 @@ if( defined( $file ) ) {
   }
 }
 
-
 my $append = 'append-play';
 if( defined( $file ) ) {
   $file =~ s/'/\\'/;
@@ -67,6 +66,9 @@ if( defined( $file ) ) {
     $append = 'append';
   }
 }
+
+usleep( $napTime );
+issue_command( "vo_fullscreen 1" );
 
 print( "Content-type:text/html\n\n" );
 print( "<meta http-equiv=refresh content='.1;/cgi-bin/remote.pl'>\n" );
