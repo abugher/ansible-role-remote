@@ -48,28 +48,25 @@ if( defined( $file ) ) {
 }
 
 
+my $append = 'append-play';
 if( defined( $file ) ) {
   $file =~ s/'/\\'/;
   if( "${file}" =~ /^\/storage\/bittorrent\/content\/radio\.m3u$/  ) {
-    issue_command( "loadlist '${file}'" );
+    issue_command( "loadlist \"${file}\" ${append}" );
   } else {
-    issue_command( "loadfile '${file}'" );
+    issue_command( "loadfile \"${file}\" ${append}" );
   }
 } else {
-  my $append = 0;
   for my $f ( sort( @fileset ) ) {
     $f =~ s/'/\\'/;
     if( "${f}" =~ /^\/storage\/bittorrent\/content\/radio\.m3u$/  ) {
-      issue_command( "loadlist '${f}' ${append}" );
+      issue_command( "loadlist \"${f}\" ${append}" );
     } else {
-      issue_command( "loadfile '${f}' ${append}" );
+      issue_command( "loadfile \"${f}\" ${append}" );
     }
-    $append = 1;
+    $append = 'append';
   }
 }
-
-#usleep( $napTime );
-#issue_command( "vo_fullscreen 1" );
 
 print( "Content-type:text/html\n\n" );
 print( "<meta http-equiv=refresh content='.1;/cgi-bin/remote.pl'>\n" );

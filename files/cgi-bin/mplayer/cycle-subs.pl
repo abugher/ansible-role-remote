@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-system( "echo 'sub_select' > /mplayer.control" );
+system( 'echo "sub_select" > /mplayer.control' );
 
 print( "Content-type:text/html\n\n" );
 print << 'EOF';

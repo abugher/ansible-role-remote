@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-system( "echo 'osd' > /mplayer.control" );
+system( 'echo "osd" > /mplayer.control' );
 
 print( "Content-type:text/html\n\n" );
 print << 'EOF';
