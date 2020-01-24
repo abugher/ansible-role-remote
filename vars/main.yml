@@ -38,6 +38,21 @@ install_files:
     mode:               '0744'
     src:                "{{ role_path }}/files/www/select-user.html"
     dest:               '/var/www/html/select-user.html'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                "{{ role_path }}/files/conf/mplayer.conf"
+    dest:               '/etc/mplayer/mplayer.conf'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                "{{ role_path }}/files/conf/sudoers.pianobar_restart"
+    dest:               '/etc/sudoers.d/pianobar_restart'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                "{{ role_path }}/files/conf/sudoers.remote_reboot"
+    dest:               '/etc/sudoers.d/remote_reboot'
 sync_dirs:
   - src:                "{{ role_path }}/files/parts/"
     dest:               '/var/www/html/parts/'

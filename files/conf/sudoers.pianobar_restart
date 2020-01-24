@@ -1,0 +1,1 @@
+www-data ALL=(ALL) NOPASSWD: /etc/init.d/pianobar stop, /etc/init.d/pianobar start, /etc/init.d/pianobar restart 
