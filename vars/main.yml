@@ -1,69 +1,68 @@
 ---
 install_packages:
-  - 'apache2'
-  - 'libapache2-mod-perl2'
-  - 'libcgi-session-perl'
+  - 'nginx'
+  - 'libnginx-mod-http-perl'
   - 'liburi-encode-perl'
   - 'rsync' # synchronize module (in sync_dirs.yml) depends on this.
-enable_apache_modules:
-  - 'cgid'
+create_files:
+  - owner:              'root'
+    group:              'root'
+    mode:               '0755'
+    state:              'directory'
+    dest:               '/usr/local/share/remote'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0755'
+    state:              'directory'
+    dest:               '/usr/local/share/remote/www'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0755'
+    state:              'directory'
+    dest:               '/usr/local/share/remote/parts'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0755'
+    state:              'directory'
+    dest:               '/usr/local/share/remote/www/cgi-bin'
 install_files:
   - owner:              'root'
     group:              'root'
-    mode:               '0755'
-    src:                "{{ role_path }}/files/cgi-bin/list.pl"
-    dest:               '/usr/lib/cgi-bin/list.pl'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0755'
-    src:                "{{ role_path }}/files/cgi-bin/listing.pl"
-    dest:               '/usr/lib/cgi-bin/listing.pl'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0755'
-    src:                "{{ role_path }}/files/cgi-bin/remote.pl"
-    dest:               '/usr/lib/cgi-bin/remote.pl'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0744'
-    src:                "{{ role_path }}/files/www/style.css"
-    dest:               '/var/www/html/style.css'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0744'
-    src:                "{{ role_path }}/files/www/index.html"
-    dest:               '/var/www/html/index.html'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0744'
-    src:                "{{ role_path }}/files/www/select-user.html"
-    dest:               '/var/www/html/select-user.html'
+    mode:               '0644'
+    src:                "files/conf/load_modules.d/perl.conf"
+    dest:               '/etc/nginx/load_modules.d/perl.conf'
   - owner:              'root'
     group:              'root'
     mode:               '0644'
-    src:                "{{ role_path }}/files/conf/mplayer.conf"
-    dest:               '/etc/mplayer/mplayer.conf'
+    src:                "files/www/style.css"
+    dest:               '/usr/local/share/remote/www/html/style.css'
   - owner:              'root'
     group:              'root'
     mode:               '0644'
-    src:                "{{ role_path }}/files/conf/sudoers.pianobar_restart"
+    src:                "files/www/index.html"
+    dest:               '/usr/local/share/remote/www/html/index.html'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                "files/www/select-user.html"
+    dest:               '/usr/local/share/remote/www/html/select-user.html'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                "files/conf/sudoers.pianobar_restart"
     dest:               '/etc/sudoers.d/pianobar_restart'
   - owner:              'root'
     group:              'root'
     mode:               '0644'
-    src:                "{{ role_path }}/files/conf/sudoers.remote_reboot"
+    src:                "files/conf/sudoers.remote_reboot"
     dest:               '/etc/sudoers.d/remote_reboot'
 sync_dirs:
-  - src:                "{{ role_path }}/files/parts/"
-    dest:               '/var/www/html/parts/'
+  - src:                "files/parts/"
+    dest:               '/usr/local/share/remote/parts/'
     delete:             'yes'
-  - src:                "{{ role_path }}/files/cgi-bin/mplayer/"
-    dest:               '/usr/lib/cgi-bin/mplayer/'
-    delete:             'no'
-  - src:                "{{ role_path }}/files/cgi-bin/pianobar/"
-    dest:               '/usr/lib/cgi-bin/pianobar/'
+  - src:                "files/cgi-bin/"
+    dest:               '/usr/local/share/remote/cgi-bin/'
     delete:             'no'
 restart_services:
-  - 'apache2'
-known_hosts:
-  - 'files'
+  - 'nginx'
+known_hosts:            "{{ groups['storage_server'] }}"

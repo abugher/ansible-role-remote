@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-package MelioraRemote::IncludeHTML;
+package Remote::IncludeHTML;
 
 sub includeHTML {
   my ($file_name) = @_;
