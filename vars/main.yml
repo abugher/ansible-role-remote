@@ -29,11 +29,6 @@ install_files:
   - owner:              'root'
     group:              'root'
     mode:               '0644'
-    src:                "files/conf/load_modules.d/perl.conf"
-    dest:               '/etc/nginx/load_modules.d/perl.conf'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0644'
     src:                "files/www/style.css"
     dest:               '/usr/local/share/remote/www/html/style.css'
   - owner:              'root'
