@@ -7,22 +7,31 @@ use CGI;
 
 
 my $q = CGI->new();
-my $station = $q->param('station');
+my $user = $q->param('user');
 
-if(  $station !~ /^[0-9]{1,100}$/ ) {
-  die( 'I need a reasonably sized number.' );
+if( ! defined( $user ) ) {
+  die('Who?');
+}
+
+my $config_file;
+if( 'aaron' eq "${user}" ) {
+  $config_file = 'config_aaron';
+} elsif( 'rachel' eq "${user}" ) {
+  $config_file = 'config_rachel';
+} else {
+  die 'Who?';
 }
 
 my $ret = 0;
 system( 'sudo /etc/init.d/pianobar stop >/dev/null 2>&1' );
-$ret = ( $? >> 8 );
+$ret = $? >> 8;
 if( 0 != $ret ) {
   die "Error:  Failed to stop pianobar: ${ret}";
 }
-my $real_config = readlink( '/etc/pianobard/config' );
-system( "sed -Ei 's/autostart_station = [0-9]+/autostart_station = ${station}/' '/etc/pianobard/${real_config}'" );
+unlink( '/etc/pianobard/config' );
+symlink( $config_file, '/etc/pianobard/config' );
 system( 'sudo /etc/init.d/pianobar start >/dev/null 2>&1' );
-$ret = ( $? >> 8 );
+$ret = $? >> 8;
 if( 0 != $ret ) {
   die "Error:  Failed to start pianobar: ${ret}";
 }
@@ -31,4 +40,4 @@ if( 0 != $ret ) {
 system( 'echo " " > /pianobar.control' );
 
 print( "Content-type:text/html\n\n" );
-print( "<meta http-equiv=refresh content='.1;/cgi-bin/remote.pl'>\n" );
+print( "<meta http-equiv=refresh content='.1;/remote.pl'>\n" );

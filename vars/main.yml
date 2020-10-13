@@ -8,38 +8,8 @@ create_files:
     group:              'root'
     mode:               '0755'
     state:              'directory'
-    dest:               '/usr/local/share/remote'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0755'
-    state:              'directory'
-    dest:               '/usr/local/share/remote/www'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0755'
-    state:              'directory'
-    dest:               '/usr/local/share/remote/parts'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0755'
-    state:              'directory'
-    dest:               '/usr/local/share/remote/www/cgi-bin'
+    path:               '/usr/local/share/remote'
 install_files:
-  - owner:              'root'
-    group:              'root'
-    mode:               '0644'
-    src:                "files/www/style.css"
-    dest:               '/usr/local/share/remote/www/html/style.css'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0644'
-    src:                "files/www/index.html"
-    dest:               '/usr/local/share/remote/www/html/index.html'
-  - owner:              'root'
-    group:              'root'
-    mode:               '0644'
-    src:                "files/www/select-user.html"
-    dest:               '/usr/local/share/remote/www/html/select-user.html'
   - owner:              'root'
     group:              'root'
     mode:               '0644'
@@ -51,12 +21,29 @@ install_files:
     src:                "files/conf/sudoers.remote_reboot"
     dest:               '/etc/sudoers.d/remote_reboot'
 sync_dirs:
-  - src:                "files/parts/"
-    dest:               '/usr/local/share/remote/parts/'
+  - src:                "files/remote/"
+    dest:               '/usr/local/share/remote/'
     delete:             'yes'
-  - src:                "files/cgi-bin/"
-    dest:               '/usr/local/share/remote/cgi-bin/'
-    delete:             'no'
+template_files:
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                'templates/sites-available/remote.j2'
+    dest:               '/etc/nginx/sites-available/remote'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                'templates/sites-available/remote.ssl.j2'
+    dest:               '/etc/nginx/sites-available/remote.ssl'
+symlinks:
+  - owner:              'root'
+    group:              'root'
+    src:                '/etc/nginx/sites-available/remote'
+    dest:               '/etc/nginx/sites-enabled/remote'
+  - owner:              'root'
+    group:              'root'
+    src:                '/etc/nginx/sites-available/remote.ssl'
+    dest:               '/etc/nginx/sites-enabled/remote.ssl'
 restart_services:
   - 'nginx'
 known_hosts:            "{{ groups['storage_server'] }}"

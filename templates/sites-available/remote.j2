@@ -1,0 +1,4 @@
+server {
+  server_name           remote remote.{{ domain }};
+  return 301            https://remote.{{ domain }}$request_uri;
+}

@@ -71,4 +71,4 @@ usleep( $napTime );
 issue_command( "vo_fullscreen 1" );
 
 print( "Content-type:text/html\n\n" );
-print( "<meta http-equiv=refresh content='.1;/cgi-bin/remote.pl'>\n" );
+print( "<meta http-equiv=refresh content='.1;/remote.pl'>\n" );

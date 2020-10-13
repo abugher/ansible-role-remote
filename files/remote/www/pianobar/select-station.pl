@@ -62,7 +62,7 @@ for my $station_name ( sort( keys( %stations ) ) ) {
     </div>
     <div class="level">
     </div>
-    <a href="/cgi-bin/pianobar/change-station.pl?station=$station_id">
+    <a href="/pianobar/change-station.pl?station=$station_id">
       <div class='file-entry'>
         $station_name
       </div>

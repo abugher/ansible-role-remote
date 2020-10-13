@@ -7,7 +7,7 @@ use CGI;
 use URI::Encode;
 
 
-use lib '/usr/local/share/remote/parts/perl';
+use lib '/usr/local/share/remote/lib/perl';
 use Remote::IncludeHTML;
 
 my $uri     = URI::Encode->new( { encode_reserved => 1 } );
@@ -32,14 +32,14 @@ closedir( $content_handle );
 # Kick off the HTTP session.
 print( "Content-type:text/html\n\n" );
 
-Remote::IncludeHTML::includeHTML('/usr/local/share/remote/parts/html/page-open.html');
-Remote::IncludeHTML::includeHTML('/usr/local/share/remote/parts/html/head-open.html');
-Remote::IncludeHTML::includeHTML('/usr/local/share/remote/parts/html/listing-js.html');
-Remote::IncludeHTML::includeHTML('/usr/local/share/remote/parts/html/head-close.html');
+Remote::IncludeHTML::includeHTML('/usr/local/share/remote/lib/html/page-open.html');
+Remote::IncludeHTML::includeHTML('/usr/local/share/remote/lib/html/head-open.html');
+Remote::IncludeHTML::includeHTML('/usr/local/share/remote/lib/html/listing-js.html');
+Remote::IncludeHTML::includeHTML('/usr/local/share/remote/lib/html/head-close.html');
 
 print( "<body>\n" );
 
-print( "<form action='/cgi-bin/mplayer/play.pl?'>\n");
+print( "<form action='/mplayer/play.pl?'>\n");
 
   print << "EOF";
 
@@ -84,10 +84,10 @@ for my $file ( @sortedFiles ) {
   if( -f "${content_dir}/${file}" ) {
     $class = 'file-entry';
     $checkbox = "<input class='file-set-checkbox' type='checkbox' name='fileset' value='${escaped_file}'>";
-    $link_target="/cgi-bin/mplayer/play.pl?file=${escaped_file}";
+    $link_target="/mplayer/play.pl?file=${escaped_file}";
   } elsif( -d "${content_dir}/${file}" ) {
     $class = 'dir-entry';
-    $link_target="/cgi-bin/listing.pl?dir=${escaped_file}";
+    $link_target="/listing.pl?dir=${escaped_file}";
     $file .= '/';
   } else {
     die "Unknown file type:  '${file}'";
