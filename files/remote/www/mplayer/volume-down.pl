@@ -3,7 +3,11 @@
 use strict;
 use warnings;
 
-system( 'echo "volume -1" > /mplayer.control' );
+# mplayer:
+#system( 'echo "volume -1" > /mplayer.control' );
+
+# mpv:
+system( 'echo "add volume -1" > /mplayer.control' );
 
 print( "Content-type:text/html\n\n" );
 print << 'EOF';

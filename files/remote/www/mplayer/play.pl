@@ -68,7 +68,11 @@ if( defined( $file ) ) {
 }
 
 usleep( $napTime );
-issue_command( "vo_fullscreen 1" );
+# mplayer:
+#issue_command( "vo_fullscreen 1" );
+
+#mpv
+issue_command( "set fullscreen yes" );
 
 print( "Content-type:text/html\n\n" );
 print( "<meta http-equiv=refresh content='.1;/remote.pl'>\n" );

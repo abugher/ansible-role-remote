@@ -3,7 +3,11 @@
 use strict;
 use warnings;
 
-system( 'echo "pt_step -1" > /mplayer.control' );
+# mplayer:
+#system( 'echo "pt_step -1" > /mplayer.control' );
+
+# mpv:
+system( 'echo "playlist-prev" > /mplayer.control' );
 
 print( "Content-type:text/html\n\n" );
 print << 'EOF';

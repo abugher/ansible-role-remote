@@ -3,7 +3,11 @@
 use strict;
 use warnings;
 
-system( 'echo "vo_fullscreen" > /mplayer.control' );
+# mplayer:
+#system( 'echo "vo_fullscreen" > /mplayer.control' );
+
+# mpv
+system( 'echo "cycle fullscreen" > /mplayer.control' );
 
 print( "Content-type:text/html\n\n" );
 print << 'EOF';

@@ -3,7 +3,11 @@
 use strict;
 use warnings;
 
-system( 'echo "osd" > /mplayer.control' );
+# mplayer:
+#system( 'echo "osd" > /mplayer.control' );
+
+# mpv:
+system( 'echo "show-progress" > /mplayer.control' );
 
 print( "Content-type:text/html\n\n" );
 print << 'EOF';

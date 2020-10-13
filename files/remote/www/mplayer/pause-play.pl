@@ -3,7 +3,11 @@
 use strict;
 use warnings;
 
-system( 'echo "pause" > /mplayer.control' );
+# mplayer:
+#system( 'echo "pause" > /mplayer.control' );
+
+# mpv:
+system( 'echo "cycle pause" > /mplayer.control' );
 
 print( "Content-type:text/html\n\n" );
 print << 'EOF';
