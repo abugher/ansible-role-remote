@@ -7,7 +7,10 @@ use warnings;
 #system( 'echo "osd" > /mplayer.control' );
 
 # mpv:
+## momentary:
 system( 'echo "show-progress" > /mplayer.control' );
+## persistent:
+system( 'echo "cycle osd-level" > /mplayer.control' );
 
 print( "Content-type:text/html\n\n" );
 print << 'EOF';
