@@ -3,7 +3,6 @@ install_packages:
   - 'nginx'
   - 'libnginx-mod-http-perl'
   - 'liburi-encode-perl'
-  - 'rsync' # synchronize module (in sync_dirs.yml) depends on this.
 create_files:
   - owner:              'root'
     group:              'root'
