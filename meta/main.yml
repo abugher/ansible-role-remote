@@ -1,7 +1,7 @@
 ---
 dependencies:
-# I should write a role and name it apache.
-#  - role: 'apache'
+  - role:       'nginx'
+    when:       skipdeps is not defined
   - role:       'pianobard'
     when:       skipdeps is not defined
   - role:       'mplayerd'
