@@ -47,3 +47,8 @@ symlinks:
 restart_services:
   - 'nginx'
 known_hosts:            "{{ groups['storage_server'] }}"
+  - 'nginx'
+  - 'pianobard'
+  - 'mplayerd'
+  - 'root_keys'
+  - 'sshfs_client'
