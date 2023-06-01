@@ -50,5 +50,5 @@ known_hosts:            "{{ groups['storage_server'] }}"
   - 'nginx'
   - 'pianobard'
   - 'mplayerd'
-  - 'root_keys'
+  - 'root-keys'
   - 'sshfs_client'
