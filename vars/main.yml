@@ -1,4 +1,10 @@
 ---
+dependencies:
+  - 'nginx'
+  - 'pianobard'
+  - 'mplayerd'
+  - 'root-keys'
+  - 'sshfs-client'
 install_packages:
   - 'nginx'
   - 'libnginx-mod-http-perl'
@@ -46,9 +52,5 @@ symlinks:
     dest:               '/etc/nginx/sites-enabled/remote.ssl'
 restart_services:
   - 'nginx'
-known_hosts:            "{{ groups['storage_server'] }}"
-  - 'nginx'
-  - 'pianobard'
-  - 'mplayerd'
-  - 'root-keys'
-  - 'sshfs_client'
+known_hosts:            "{{ groups['storage-server'] }}"
+
