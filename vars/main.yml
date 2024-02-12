@@ -9,6 +9,7 @@ install_packages:
   - 'nginx'
   - 'libnginx-mod-http-perl'
   - 'liburi-encode-perl'
+  - 'libcgi-session-perl'
 create_files:
   - owner:              'root'
     group:              'root'
