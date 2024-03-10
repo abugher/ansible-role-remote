@@ -1,0 +1,17 @@
+---
+dependencies:
+  - role:     'nginx'
+    tags:     
+      - 'dependency'
+  - role:     'pianobard'
+    tags:     
+      - 'dependency'
+  - role:     'mplayerd'
+    tags:     
+      - 'dependency'
+  - role:     'root-keys'
+    tags:     
+      - 'dependency'
+  - role:     'sshfs-client'
+    tags:     
+      - 'dependency'

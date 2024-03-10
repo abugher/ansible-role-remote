@@ -1,10 +1,4 @@
 ---
-dependencies:
-  - 'nginx'
-  - 'pianobard'
-  - 'mplayerd'
-  - 'root-keys'
-  - 'sshfs-client'
 install_packages:
   - 'nginx'
   - 'libnginx-mod-http-perl'
