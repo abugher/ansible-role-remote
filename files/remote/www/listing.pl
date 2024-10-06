@@ -4,13 +4,11 @@ use strict;
 use warnings;
 
 use CGI;
-use URI::Encode;
+use URI::Escape;
 
 
 use lib '/usr/local/share/remote/lib/perl';
 use Remote::IncludeHTML;
-
-my $uri     = URI::Encode->new( { encode_reserved => 1 } );
 
 # Sort by name, since filenames often start with indices.
 my $sortBy = 'name';
@@ -78,7 +76,7 @@ for my $file ( @sortedFiles ) {
   my $stamp = sprintf( "%04d-%02d-%02d, %02d:%02d:%02d", $year + 1900, $month, $day_of_month, $hour, $minute, $second );
 
   my $link_target;
-  my $escaped_file = $uri->encode("${content_dir}/${file}");
+  my $escaped_file = uri_escape("${content_dir}/${file}");
   my $class = '';
   my $checkbox = '';
   if( -f "${content_dir}/${file}" ) {
