@@ -13,4 +13,8 @@ server {
     # See:  http://stackoverflow.com/a/15424808
     fastcgi_param SCRIPT_FILENAME $document_root/$fastcgi_script_name;
   }
+
+  location =/favicon.ico {
+    alias               /usr/share/nginx/html/favicon.ico;
+  }
 }
