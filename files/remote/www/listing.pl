@@ -44,8 +44,10 @@ print( "<form action='/mplayer/play.pl?'>\n");
   <input type='submit' class='big-button' value='Play Selected'>
   </input>
 
+  <!--
   <input type='submit' class='big-button' value='Play in Browser' onclick='this.form.action="play-in-browser.pl?";'>
   </input>
+  -->
 
   <input type='button' class='big-button' value='Select All' onclick='toggleSelectAll()'>
   </input>
