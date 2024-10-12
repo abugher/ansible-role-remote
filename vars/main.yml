@@ -1,6 +1,5 @@
 ---
 install_packages:
-  - 'nginx'
   - 'libnginx-mod-http-perl'
   - 'liburi-encode-perl'
   - 'libcgi-session-perl'

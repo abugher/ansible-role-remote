@@ -31,14 +31,16 @@ if( defined( $file ) ) {
 
 print( "Content-type:text/html\n\n" );
 if( defined( $file ) ) {
+  @fileset = ( $file );
+}
+
+for my $file ( sort( @fileset ) ) {
   $file =~ s/\/storage\/bittorrent\/content\///;
   $file = uri_escape( $file );
-  print( "<meta http-equiv=refresh content='.1;http://download.neuronpointer.net/$file'>\n" );
-} else {
-  for my $f ( sort( @fileset ) ) {
-    $f =~ s/\/storage\/bittorrent\/content\///;
-    $f = uri_escape( $f );
-    print( "<meta http-equiv=refresh content='.1;http://download.neuronpointer.net/$f'>\n" );
-    last;
-  }
+  print( "<video controls>" );
+  print( "  <source src='http://convert.neuronpointer.net/play.pl?file=$file' type='video/mp4'>" );
+  print( "</video>" );
+  print( "<meta http-equiv=refresh content='.1;http://convert.neuronpointer.net/play.pl?file=$file'>\n" );
+  #print( "http://convert.neuronpointer.net/play.pl?file=$file\n" );
+  #last;
 }
