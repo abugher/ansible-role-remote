@@ -1,5 +1,5 @@
 server {
-  server_name           remote remote.{{ domain }};
+  server_name           remote remote.{{ domain }}{% for domain_alias in domain_aliases %} remote.{{ domain_alias }}{% endfor %};
 
   root                  /usr/local/share/remote/www/;
   index                 index.html;

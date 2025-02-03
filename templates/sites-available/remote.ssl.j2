@@ -2,7 +2,7 @@ server {
   listen                443 ssl;
   ssl_certificate       /etc/ssl/certs/chain.pem;
   ssl_certificate_key   /etc/ssl/private/{{ inventory_hostname }}.pem;
-  server_name           remote remote.{{ domain }};
+  server_name           remote remote.{{ domain }}{% for domain_alias in domain_aliases %} remote.{{ domain_alias }}{% endfor %};
 
   root                  /usr/local/share/remote/www/;
   index                 index.html;
